@@ -42,11 +42,7 @@ const footerLinks = {
   ],
 }
 
-const socialLinks = [
-  { name: 'X', href: 'https://twitter.com', icon: Twitter },
-  { name: 'Instagram', href: 'https://instagram.com', icon: Instagram },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
-]
+const socialLinks: { name: string; href: string; icon: any }[] = []
 
 export function Footer() {
   if (FOOTER_OVERRIDE_ENABLED) {
@@ -84,9 +80,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr_1fr]">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-7">
               <div className="flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 p-2">
-                  <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-full w-full object-contain" />
-                </div>
+                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-14 w-14 object-contain" />
                 <div>
                   <p className="text-lg font-semibold">{SITE_CONFIG.name}</p>
                   <p className="text-xs uppercase tracking-[0.24em] text-slate-400">{siteContent.footer.tagline}</p>
@@ -117,16 +111,6 @@ export function Footer() {
                   ))}
                 </ul>
               </div>
-              <div>
-                <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Connect</h3>
-                <div className="mt-4 flex gap-3">
-                  {socialLinks.map((item) => (
-                    <Link key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 bg-white/8 p-2.5 text-slate-200 hover:bg-white/12 hover:text-white">
-                      <item.icon className="h-4 w-4" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
           <div className="mt-10 border-t border-white/10 pt-5 text-sm text-slate-400">&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</div>
@@ -152,9 +136,6 @@ export function Footer() {
                 Schedule a consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/sbm" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white hover:bg-white/5">
-                Browse saved links
-              </Link>
             </div>
           </div>
 
@@ -178,9 +159,7 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col items-center text-center lg:px-8">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/12 bg-white/5 p-2">
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="64" height="64" className="h-full w-full object-contain" />
-              </div>
+              <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="64" height="64" className="h-16 w-16 object-contain" />
               <p className="mt-4 text-2xl font-semibold tracking-tight text-white">{SITE_CONFIG.name}</p>
               <p className="mt-2 max-w-xs text-xs uppercase tracking-[0.24em] text-[#c9a227]">{siteContent.footer.tagline}</p>
             </div>
@@ -215,21 +194,8 @@ export function Footer() {
 
           <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 text-sm text-[#a89b8c] sm:flex-row">
             <p>
-              &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Crafted for intentional saving.
+              &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-white/12 bg-white/5 p-2.5 text-[#f4efe6] hover:bg-white/10 hover:text-white"
-                >
-                  <item.icon className="h-4 w-4" />
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </footer>
@@ -242,9 +208,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <div className="h-14 w-14 overflow-hidden rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-full w-full object-contain" />
-              </div>
+              <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-14 w-14 object-contain" />
               <div>
                 <span className="block text-lg font-semibold">{SITE_CONFIG.name}</span>
                 <span className="text-xs uppercase tracking-[0.22em] text-slate-500">{siteContent.footer.tagline}</span>

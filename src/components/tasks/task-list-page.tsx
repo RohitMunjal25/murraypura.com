@@ -200,7 +200,25 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
         {layoutKey === 'profile-creator' || layoutKey === 'profile-business' ? (
           <section className={`mb-12 rounded-[2.2rem] p-8 shadow-[0_24px_70px_rgba(58,42,28,0.08)] ${ui.panel}`}>
             <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div className={`min-h-[240px] rounded-[2rem] ${ui.soft}`} />
+              {posts.length > 0 ? (
+                <Link href={`${taskConfig?.route || '/profile'}/${posts[0].slug}`} className={`block overflow-hidden rounded-[2rem] ${ui.soft} hover:opacity-90 transition-opacity`}>
+                  <div className="relative min-h-[240px] overflow-hidden">
+                    <img
+                      src={posts[0].media?.[0]?.url || '/favicon.png?v=20260401'}
+                      alt={posts[0].title}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8c547]">Latest Profile</p>
+                      <h3 className="mt-2 text-xl font-semibold text-white">{posts[0].title}</h3>
+                      <p className="mt-1 text-sm text-white/80 line-clamp-2">{posts[0].summary || 'View profile'}</p>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div className={`min-h-[240px] rounded-[2rem] ${ui.soft}`} />
+              )}
               <div>
                 <p className={`text-xs uppercase tracking-[0.3em] ${ui.muted}`}>{taskConfig?.label || task}</p>
                 <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-foreground">
