@@ -2,14 +2,12 @@ import Link from 'next/link'
 import { ArrowRight, Bookmark, Heart, Shield, Sparkles, Users } from 'lucide-react'
 import { PageShell } from '@/components/shared/page-shell'
 import { Button } from '@/components/ui/button'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { mockTeamMembers } from '@/data/mock-data'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 const stats = [
-  { label: 'Curators active', value: '12k+', detail: 'Profiles with public collections' },
-  { label: 'Links saved', value: '180k', detail: 'Bookmarks with notes & tags' },
-  { label: 'Collections shared', value: '9.4k', detail: 'Ready-to-follow shelves' },
+  { label: 'Active curators', value: '2,500+', detail: 'Users with public collections' },
+  { label: 'Bookmarks saved', value: '45,000+', detail: 'Links with notes and tags' },
+  { label: 'Collections created', value: '1,200+', detail: 'Organized shelves and libraries' },
 ]
 
 const pillars = [
@@ -31,9 +29,9 @@ const pillars = [
 ]
 
 const timeline = [
-  { year: '2022', title: 'First shelves', copy: 'A small group of designers began saving research in shared collections instead of scattered docs.' },
-  { year: '2024', title: 'Profiles launch', copy: 'Public pages debuted so every collection could point back to a real person or studio with clear stewardship.' },
-  { year: '2026', title: 'Murraypura polish', copy: 'The experience you see now—warm editorial UI, calmer navigation, and bookmark-first flows—lands for daily use.' },
+  { year: '2024', title: 'Platform launch', copy: 'Murraypura began as a simple bookmarking tool for a small group of designers and researchers.' },
+  { year: '2025', title: 'Public profiles', copy: 'Added profile pages so every collection could be traced back to its curator with context.' },
+  { year: '2026', title: 'Community features', copy: 'Introduced sharing, collaboration tools, and the warm editorial experience you see today.' },
 ]
 
 export default function AboutPage() {
@@ -108,38 +106,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="mt-16">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#a18b7a]">People</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#2a1f1a]">Team you may hear from</h2>
-          </div>
-          <Link href="/careers" className="text-sm font-semibold text-[#c9a227] hover:underline">
-            View open roles →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {mockTeamMembers.map((member) => (
-            <div
-              key={member.id}
-              className="rounded-[1.75rem] border border-[#e8dfd2] bg-[#fffefb] p-6 shadow-[0_16px_48px_rgba(58,42,28,0.05)] transition hover:-translate-y-0.5"
-            >
-              <div className="flex items-center gap-3">
-                <Avatar className="h-12 w-12 rounded-2xl border border-[#e4d8cc]">
-                  <AvatarImage src={member.avatar} alt={member.name} />
-                  <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm font-semibold text-[#2a1f1a]">{member.name}</p>
-                  <p className="text-xs text-[#8a7568]">{member.role}</p>
-                </div>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-[#6b584c]">{member.bio}</p>
-              <p className="mt-3 text-xs text-[#a18b7a]">{member.location}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </PageShell>
   )
 }
