@@ -1,6 +1,7 @@
-import { TaskDetailPage } from "@/components/tasks/task-detail-page";
+import { SbmDetailPage } from "@/components/sbm/sbm-detail-page";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
 import { fetchTaskPostBySlug, fetchTaskPosts } from "@/lib/task-data";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3;
 
@@ -20,5 +21,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BookmarkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  return <TaskDetailPage task="sbm" slug={resolvedParams.slug} />;
+  const post = await fetchTaskPostBySlug("sbm", resolvedParams.slug);
+  
+  if (!post) {
+    notFound();
+  }
+
+  const related = (await fetchTaskPosts("sbm", 6))
+    .filter((item) => item.slug !== post.slug)
+    .filter((item) => {
+      const content = item.content && typeof item.content === "object" ? item.content : {};
+      const postContent = post.content && typeof post.content === "object" ? post.content : {};
+      const itemCategory = (content as any).category || item.tags?.[0];
+      const postCategory = (postContent as any).category || post.tags?.[0];
+      if (!postCategory) return true;
+      return itemCategory === postCategory;
+    })
+    .slice(0, 3);
+
+  return <SbmDetailPage post={post} related={related} />;
 }
