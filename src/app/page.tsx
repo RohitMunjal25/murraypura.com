@@ -60,7 +60,7 @@ function getPostImage(post?: SitePost | null) {
   const logo = typeof post?.content === 'object' && post?.content && typeof (post.content as any).logo === 'string'
     ? (post.content as any).logo
     : null
-  return mediaUrl || contentImage || logo || '/placeholder.svg?height=900&width=1400'
+  return mediaUrl || contentImage || logo || '/favicon.png?v=20260401'
 }
 
 function getPostMeta(post?: SitePost | null) {
@@ -478,9 +478,6 @@ function CurationHome({ primaryTask, bookmarkPosts, profilePosts, articlePosts }
                 Save your first collection
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/profile" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/15">
-                View featured profiles
-              </Link>
             </div>
           </div>
         </div>
@@ -541,77 +538,6 @@ function CurationHome({ primaryTask, bookmarkPosts, profilePosts, articlePosts }
         </div>
       </section>
 
-      <section className="bg-[#f3ebe0]/70 py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-3 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#8a7568]">People behind the saves</p>
-            <h2 className="text-4xl font-semibold tracking-[-0.03em] text-[#2a1f1a]">Meet our profile curators</h2>
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#6b584c]">Every highlighted profile blends identity, expertise, and the collections they steward for the community.</p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {expertTiles.map((person, index) => {
-              const highlight = index === 1
-              return (
-                <Link
-                  key={person.id}
-                  href={person.href}
-                  className={`relative overflow-hidden rounded-[2rem] border border-[#e4d8cc] bg-white shadow-[0_24px_70px_rgba(58,42,28,0.08)] ${highlight ? 'md:-translate-y-2' : ''}`}
-                >
-                  <div className="relative h-72 w-full overflow-hidden rounded-t-[2rem]">
-                    <ContentImage src={person.image} alt={person.name} fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" intrinsicWidth={800} intrinsicHeight={960} />
-                    {highlight ? <div className="absolute inset-0 bg-gradient-to-t from-[#1f1612]/88 via-transparent to-transparent" /> : null}
-                  </div>
-                  {!highlight ? (
-                    <div className="space-y-2 px-6 py-6">
-                      <p className="text-xs uppercase tracking-[0.2em] text-[#a18b7a]">Curator</p>
-                      <p className="text-lg font-semibold text-[#2a1f1a]">{person.name}</p>
-                      <p className="text-sm text-[#6b584c]">{person.role}</p>
-                    </div>
-                  ) : null}
-                  {highlight ? (
-                    <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-[#e8c547] px-4 py-3 text-left text-sm font-semibold text-[#1a120e] shadow-lg">
-                      {person.name}
-                      <span className="mt-1 block text-xs font-medium text-[#3d2f28]">{person.role}</span>
-                    </div>
-                  ) : null}
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a18b7a]">Community proof</p>
-          <h2 className="text-4xl font-semibold tracking-[-0.03em] text-[#2a1f1a]">1000+ happy savers</h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#6b584c]">Vertical story cards echo the social bookmarking energy members share every week.</p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {reelTiles.map((reel) => (
-            <Link key={reel.id} href={reel.href} className="relative mx-auto w-full max-w-xs overflow-hidden rounded-[2rem] border border-[#e8dfd2] bg-[#0b1220] shadow-[0_30px_80px_rgba(15,23,42,0.18)]">
-              <div className="relative aspect-[9/16] w-full">
-                <ContentImage src={reel.image} alt={reel.title} fill className="object-cover opacity-95" sizes="320px" intrinsicWidth={900} intrinsicHeight={1600} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05070d]/85 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-sm font-semibold text-white">{reel.title}</div>
-                <div className="absolute right-3 top-3 flex flex-col gap-2 text-white">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 backdrop-blur">
-                    <Heart className="h-4 w-4" />
-                  </span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 backdrop-blur">
-                    <MessageCircle className="h-4 w-4" />
-                  </span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 backdrop-blur">
-                    <Share2 className="h-4 w-4" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
     </main>
   )
 }

@@ -754,26 +754,26 @@ export const mockDashboardStats: DashboardStats = {
 export const mockTeamMembers: TeamMember[] = [
   {
     id: 'team-1',
-    name: 'Avery Brooks',
-    role: 'Head of Community',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Building programs that connect creators with meaningful collaborations.',
-    location: 'Austin, TX'
-  },
-  {
-    id: 'team-2',
-    name: 'Jordan Lee',
-    role: 'Product Lead',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-    bio: 'Designing calm, curated experiences for modern teams.',
+    name: 'Dr. Lena Ortiz',
+    role: 'Collections & taxonomy lead',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop',
+    bio: 'Building structured collections and taxonomy systems for better knowledge organization.',
     location: 'San Francisco, CA'
   },
   {
+    id: 'team-2',
+    name: 'Noah Kim',
+    role: 'Community bookmarking guide',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
+    bio: 'Helping users discover and organize meaningful bookmarks through community programs.',
+    location: 'Austin, TX'
+  },
+  {
     id: 'team-3',
-    name: 'Priya Desai',
-    role: 'Engineering',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Focused on reliability, search, and delightful performance.',
+    name: 'Amelia Brooks',
+    role: 'Profiles & trust programs',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop',
+    bio: 'Ensuring profile authenticity and building trust systems for the community.',
     location: 'New York, NY'
   }
 ]

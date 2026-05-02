@@ -12,27 +12,27 @@ export const metadata: Metadata = {
 
 const programs = [
   {
-    title: 'Shelf walks',
-    body: 'Monthly live sessions where curators screen-share a collection, explain why each link matters, and take questions.',
+    title: 'Curator workshops',
+    body: 'Monthly sessions where experienced curators share their collection strategies, tagging systems, and workflow tips for organizing bookmarks effectively.',
     icon: Bookmark,
   },
   {
-    title: 'Profile spotlights',
-    body: 'Nominate someone whose public page teaches you something new—we feature rotating voices from the directory.',
+    title: 'Profile features',
+    body: 'Highlight exceptional community members whose public profiles demonstrate thoughtful curation and inspire others to build better collections.',
     icon: Users,
   },
   {
-    title: 'Feedback studio',
-    body: 'Share UI notes or bookmark workflows you wish existed. Highest-voted ideas get prototype explorations in the open.',
+    title: 'Collection feedback',
+    body: 'Share your bookmark collections for peer review. Get constructive feedback on organization, discoverability, and presentation from fellow curators.',
     icon: Wand2,
   },
 ]
 
 const guidelines = [
-  'Lead with generosity: credit original authors and tools when you reshare a collection.',
-  'Keep discussions kind and specific—reference the link or profile you are reacting to.',
-  'No drive-by promotion. Share work when it answers a question or fits a themed thread.',
-  'Respect privacy. If a profile is quiet, assume they are listening—not an invitation for cold outreach spam.',
+  'Credit sources: Always attribute original authors and tools when sharing bookmarks or collections from others.',
+  'Add context: Include notes, tags, or categories with your saves to make them useful for others.',
+  'Quality over quantity: Focus on curating meaningful links rather than accumulating raw URLs.',
+  'Respect privacy: Only share public collections and profiles. Private shelves should remain private.',
 ]
 
 export default function CommunityPage() {

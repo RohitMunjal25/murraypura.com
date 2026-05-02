@@ -34,7 +34,7 @@ const taskIcons: Record<TaskKey, any> = {
 const variantClasses = {
   'compact-bar': {
     shell: 'border-b border-slate-200/80 bg-white/88 text-slate-950 backdrop-blur-xl',
-    logo: 'rounded-2xl border border-slate-200 bg-white shadow-sm',
+    logo: '',
     active: 'bg-slate-950 text-white',
     idle: 'text-slate-600 hover:bg-slate-100 hover:text-slate-950',
     cta: 'rounded-full bg-slate-950 text-white hover:bg-slate-800',
@@ -42,7 +42,7 @@ const variantClasses = {
   },
   'editorial-bar': {
     shell: 'border-b border-[#e8dfd2] bg-[#fffefb]/92 text-[#2a1f1a] backdrop-blur-xl',
-    logo: 'rounded-full border border-[#e4d8cc] bg-white shadow-[0_12px_40px_rgba(58,42,28,0.08)]',
+    logo: '',
     active: 'bg-[#e8c547] text-[#1a120e]',
     idle: 'text-[#6b584c] hover:bg-[#f3ebe0] hover:text-[#2a1f1a]',
     cta: 'rounded-full bg-[#e8c547] text-[#1a120e] hover:bg-[#dfc03a]',
@@ -50,7 +50,7 @@ const variantClasses = {
   },
   'floating-bar': {
     shell: 'border-b border-transparent bg-transparent text-white',
-    logo: 'rounded-[1.35rem] border border-white/12 bg-white/8 shadow-[0_16px_48px_rgba(15,23,42,0.22)] backdrop-blur',
+    logo: '',
     active: 'bg-[#8df0c8] text-[#07111f]',
     idle: 'text-slate-200 hover:bg-white/10 hover:text-white',
     cta: 'rounded-full bg-[#8df0c8] text-[#07111f] hover:bg-[#77dfb8]',
@@ -58,7 +58,7 @@ const variantClasses = {
   },
   'utility-bar': {
     shell: 'border-b border-[#d7deca] bg-[#f4f6ef]/94 text-[#1f2617] backdrop-blur-xl',
-    logo: 'rounded-xl border border-[#d7deca] bg-white shadow-sm',
+    logo: '',
     active: 'bg-[#1f2617] text-[#edf5dc]',
     idle: 'text-[#56604b] hover:bg-[#e7edd9] hover:text-[#1f2617]',
     cta: 'rounded-lg bg-[#1f2617] text-[#edf5dc] hover:bg-[#2f3a24]',
@@ -69,7 +69,7 @@ const variantClasses = {
 const directoryPalette = {
   'directory-clean': {
     shell: 'border-b border-slate-200 bg-white/94 text-slate-950 shadow-[0_1px_0_rgba(15,23,42,0.04)] backdrop-blur-xl',
-    logo: 'rounded-2xl border border-slate-200 bg-slate-50',
+    logo: '',
     nav: 'text-slate-600 hover:text-slate-950',
     search: 'border border-slate-200 bg-slate-50 text-slate-600',
     cta: 'bg-slate-950 text-white hover:bg-slate-800',
@@ -78,7 +78,7 @@ const directoryPalette = {
   },
   'market-utility': {
     shell: 'border-b border-[#d7deca] bg-[#f4f6ef]/96 text-[#1f2617] shadow-[0_1px_0_rgba(64,76,34,0.06)] backdrop-blur-xl',
-    logo: 'rounded-xl border border-[#d7deca] bg-white',
+    logo: '',
     nav: 'text-[#56604b] hover:text-[#1f2617]',
     search: 'border border-[#d7deca] bg-white text-[#56604b]',
     cta: 'bg-[#1f2617] text-[#edf5dc] hover:bg-[#2f3a24]',
@@ -98,7 +98,7 @@ export function Navbar() {
   const { recipe } = getFactoryState()
 
   const taskNavigation = useMemo(
-    () => SITE_CONFIG.tasks.filter((task) => task.enabled && (task.key === 'profile' || task.key === 'sbm')),
+    () => SITE_CONFIG.tasks.filter((task) => task.enabled && task.key !== 'profile' && task.key !== 'sbm'),
     [],
   )
 
@@ -129,9 +129,7 @@ export function Navbar() {
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-4">
             <Link href="/" className="flex shrink-0 items-center gap-3">
-              <div className={cn('flex h-14 w-14 items-center justify-center overflow-hidden p-2', palette.logo)}>
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-full w-full object-contain" />
-              </div>
+              <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-14 w-14 shrink-0 object-contain" />
               <div className="min-w-0 hidden sm:block">
                 <span className="block truncate text-xl font-semibold">{SITE_CONFIG.name}</span>
                 <span className="block text-[10px] uppercase tracking-[0.24em] opacity-60">{siteContent.navbar.tagline}</span>
@@ -224,9 +222,7 @@ export function Navbar() {
       <nav className={cn('mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8', isFloating ? 'h-24 pt-4' : 'h-20')}>
         <div className="flex min-w-0 flex-1 items-center gap-4 lg:gap-7">
           <Link href="/" className="flex shrink-0 items-center gap-3 whitespace-nowrap pr-2">
-            <div className={cn('flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden p-2', style.logo)}>
-              <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-full w-full object-contain" />
-            </div>
+            <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="56" height="56" className="h-14 w-14 shrink-0 object-contain" />
             <div className="min-w-0 hidden sm:block">
               <span className="block truncate text-xl font-semibold">{SITE_CONFIG.name}</span>
               <span className="hidden text-[10px] uppercase tracking-[0.28em] opacity-70 sm:block">{siteContent.navbar.tagline}</span>
